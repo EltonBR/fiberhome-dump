@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Depurar na ONU via gdbserver",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/app",
+            "cwd": "${workspaceFolder}",
+            "MIMode": "gdb",
+            "miDebuggerPath": "/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/bin/arm-buildroot-linux-uclibcgnueabi-gdb",
+            "miDebuggerServerAddress": "192.168.1.245:2345",
+            "externalConsole": false,
+            "stopAtEntry": false
+        }
+    ]
+}

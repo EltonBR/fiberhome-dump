@@ -1,0 +1,45 @@
+--- a/nbd-server.c
++++ b/nbd-server.c
+@@ -1987,7 +1987,7 @@
+  **/
+ int set_peername(int net, CLIENT *client) {
+ 	struct sockaddr_storage netaddr;
+-	struct sockaddr* addr = (struct sockaddr*)&netaddr;
++	struct sockaddr* addr = (struct sockaddr*)&client->clientaddr;
+ 	socklen_t addrinlen = sizeof( struct sockaddr_storage );
+ 	struct addrinfo hints;
+ 	struct addrinfo *ai = NULL;
+@@ -2011,14 +2011,15 @@
+ 			return -1;
+ 		}
+ 
+-		memset(&hints, '\0', sizeof (hints));
+-		hints.ai_flags = AI_ADDRCONFIG;
+-		e = getaddrinfo(peername, NULL, &hints, &ai);
+-
+-		if(e != 0) {
+-			msg(LOG_INFO, "getaddrinfo failed: %s", gai_strerror(e));
+-			freeaddrinfo(ai);
+-			return -1;
++		/* Apenas CIDR usa ai; evitar DNS para IP numerico na uClibc antiga. */
++		if (client->server->virtstyle == VIRT_CIDR) {
++			memset(&hints, '\0', sizeof (hints));
++			hints.ai_flags = AI_NUMERICHOST;
++			e = getaddrinfo(peername, NULL, &hints, &ai);
++			if(e != 0) {
++				msg(LOG_INFO, "getaddrinfo failed: %s", gai_strerror(e));
++				return -1;
++			}
+ 		}
+ 	}
+ 
+@@ -2066,7 +2067,8 @@
+ 			break;
+ 	}
+ 
+-	freeaddrinfo(ai);
++	if (ai != NULL)
++		freeaddrinfo(ai);
+         msg(LOG_INFO, "connect from %s, assigned file is %s",
+             peername, client->exportname);
+ 	client->clientname=g_strdup(peername);

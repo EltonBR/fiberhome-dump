@@ -1,0 +1,88 @@
+--- a/nbd-client.c
++++ b/nbd-client.c
+@@ -51,4 +51,24 @@
+ 
+ #define NBDC_DO_LIST 1
+ 
++/* TCP pode devolver menos bytes que o campo solicitado. */
++static void read_all(int sock, void *buffer, size_t length, const char *where)
++{
++	char *cursor = buffer;
++	while (length != 0) {
++		ssize_t got = read(sock, cursor, length);
++		if (got == 0) {
++			errno = ECONNRESET;
++			err("NBD: servidor fechou a conexao: %m");
++		}
++		if (got < 0) {
++			if (errno == EINTR)
++				continue;
++			err("NBD: leitura falhou: %m");
++		}
++		cursor += got;
++		length -= (size_t)got;
++	}
++}
++
+ int check_conn(char* devname, int do_print) {
+@@ -266,14 +286,12 @@
+ 	char buf[256] = "\0\0\0\0\0\0\0\0\0";
+ 
+ 	printf("Negotiation: ");
+-	if (read(sock, buf, 8) < 0)
+-		err("Failed/1: %m");
++	read_all(sock, buf, 8, "Failed/1");
+ 	if (strlen(buf)==0)
+ 		err("Server closed connection");
+ 	if (strcmp(buf, INIT_PASSWD))
+ 		err("INIT_PASSWD bad");
+ 	printf(".");
+-	if (read(sock, &magic, sizeof(magic)) < 0)
+-		err("Failed/2: %m");
++	read_all(sock, &magic, sizeof(magic), "Failed/2");
+ 	magic = ntohll(magic);
+ 	if(name) {
+@@ -286,8 +304,6 @@
+ 			}
+ 		}
+ 		printf(".");
+-		if(read(sock, &tmp, sizeof(uint16_t)) < 0) {
+-			err("Failed reading flags: %m");
+-		}
++		read_all(sock, &tmp, sizeof(uint16_t), "Failed reading flags");
+ 		*flags = ((u32)ntohs(tmp));
+ 		if((needed_flags & *flags) != needed_flags) {
+@@ -334,11 +350,7 @@
+ 		printf(".");
+ 	}
+ 
+-	if (read(sock, &size64, sizeof(size64)) <= 0) {
+-		if (!errno)
+-			err("Server closed connection");
+-		err("Failed/3: %m\n");
+-	}
++	read_all(sock, &size64, sizeof(size64), "Failed/3");
+ 	size64 = ntohll(size64);
+ 
+ 	if ((size64>>12) > (uint64_t)~0UL) {
+@@ -348,17 +360,14 @@
+ 		printf("size = %luMB", (unsigned long)(size64>>20));
+ 
+ 	if(!name) {
+-		if (read(sock, flags, sizeof(*flags)) < 0)
+-			err("Failed/4: %m\n");
++		read_all(sock, flags, sizeof(*flags), "Failed/4");
+ 		*flags = ntohl(*flags);
+ 	} else {
+-		if(read(sock, &tmp, sizeof(tmp)) < 0)
+-			err("Failed/4: %m\n");
++		read_all(sock, &tmp, sizeof(tmp), "Failed/4");
+ 		*flags |= (uint32_t)ntohs(tmp);
+ 	}
+ 
+ 	if (!(*flags & NBD_FLAG_NO_ZEROES)) {
+-		if (read(sock, &buf, 124) < 0)
+-			err("Failed/5: %m\n");
++		read_all(sock, &buf, 124, "Failed/5");
+ 	}
+ 	printf("\n");

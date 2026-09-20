@@ -1,0 +1,6 @@
+# Respostas para testes de configure que GLib 2.26.1 tentaria executar.
+# Validas para ARM EABI/uClibc desta cadeia de compilacao.
+glib_cv_stack_grows=no
+glib_cv_uscore=no
+ac_cv_func_posix_getpwuid_r=yes
+ac_cv_func_posix_getgrgid_r=yes

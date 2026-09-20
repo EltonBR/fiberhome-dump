@@ -1,0 +1,152 @@
+libcliserv_la-cliserv.lo: ../nbd-3.9.1-arm-src/cliserv.c config.h \
+ ../nbd-3.9.1-arm-src/cliserv.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/errno.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/features.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/uClibc_config.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/sys/cdefs.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/errno.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/linux/errno.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/asm/errno.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/asm-generic/errno.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/asm-generic/errno-base.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/string.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/lib/gcc/arm-buildroot-linux-uclibcgnueabi/14.3.0/include/stddef.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/xlocale.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/uClibc_locale.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/netdb.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/netinet/in.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/lib/gcc/arm-buildroot-linux-uclibcgnueabi/14.3.0/include/stdint.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/stdint.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/wchar.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/wordsize.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/sys/socket.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/sys/uio.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/sys/types.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/types.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/typesizes.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/time.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/endian.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/endian.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/byteswap.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/byteswap.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/byteswap-common.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/byteswap-16.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/sys/select.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/select.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/sigset.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/time.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/sys/sysmacros.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/pthreadtypes.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/uio.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/socket.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/lib/gcc/arm-buildroot-linux-uclibcgnueabi/14.3.0/include/limits.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/lib/gcc/arm-buildroot-linux-uclibcgnueabi/14.3.0/include/syslimits.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/limits.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/posix1_lim.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/local_lim.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/linux/limits.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/uClibc_local_lim.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/posix2_lim.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/socket_type.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/sockaddr.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/asm/socket.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/asm-generic/socket.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/linux/posix_types.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/linux/stddef.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/asm/posix_types.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/asm-generic/posix_types.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/asm/bitsperlong.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/asm-generic/bitsperlong.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/asm/sockios.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/asm-generic/sockios.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/in.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/netdb.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/netinet/tcp.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/stdlib.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/waitflags.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/waitstatus.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/alloca.h \
+ ../nbd-3.9.1-arm-src/nbd.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/stdio.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/uClibc_stdio.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/wchar.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/lib/gcc/arm-buildroot-linux-uclibcgnueabi/14.3.0/include/stdarg.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/stdio_lim.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/syslog.h \
+ /home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/sys/syslog.h
+config.h:
+../nbd-3.9.1-arm-src/cliserv.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/errno.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/features.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/uClibc_config.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/sys/cdefs.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/errno.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/linux/errno.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/asm/errno.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/asm-generic/errno.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/asm-generic/errno-base.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/string.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/lib/gcc/arm-buildroot-linux-uclibcgnueabi/14.3.0/include/stddef.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/xlocale.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/uClibc_locale.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/netdb.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/netinet/in.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/lib/gcc/arm-buildroot-linux-uclibcgnueabi/14.3.0/include/stdint.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/stdint.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/wchar.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/wordsize.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/sys/socket.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/sys/uio.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/sys/types.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/types.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/typesizes.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/time.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/endian.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/endian.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/byteswap.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/byteswap.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/byteswap-common.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/byteswap-16.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/sys/select.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/select.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/sigset.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/time.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/sys/sysmacros.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/pthreadtypes.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/uio.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/socket.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/lib/gcc/arm-buildroot-linux-uclibcgnueabi/14.3.0/include/limits.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/lib/gcc/arm-buildroot-linux-uclibcgnueabi/14.3.0/include/syslimits.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/limits.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/posix1_lim.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/local_lim.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/linux/limits.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/uClibc_local_lim.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/posix2_lim.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/socket_type.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/sockaddr.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/asm/socket.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/asm-generic/socket.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/linux/posix_types.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/linux/stddef.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/asm/posix_types.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/asm-generic/posix_types.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/asm/bitsperlong.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/asm-generic/bitsperlong.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/asm/sockios.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/asm-generic/sockios.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/in.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/netdb.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/netinet/tcp.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/stdlib.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/waitflags.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/waitstatus.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/alloca.h:
+../nbd-3.9.1-arm-src/nbd.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/stdio.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/uClibc_stdio.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/wchar.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/lib/gcc/arm-buildroot-linux-uclibcgnueabi/14.3.0/include/stdarg.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/bits/stdio_lim.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/syslog.h:
+/home/elton/fiberhome-dump/toolchains/armv5-eabi--uclibc--stable-2025.08-1/arm-buildroot-linux-uclibcgnueabi/sysroot/usr/include/sys/syslog.h:
