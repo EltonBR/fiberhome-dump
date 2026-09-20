@@ -1,0 +1,223 @@
+PHYS_OFFSET = 80500000.
+CPU: ARMv7 Processor [414fc091] revision 1 (ARMv7), cr=10c53c7f
+CPU: VIPT nonaliasing data cache, VIPT nonaliasing instruction cache
+Machine: SD5116
+Memory policy: ECC disabled, Data cache writeback
+On node 0 totalpages: 15104
+free_area_init_node: node 0, pgdat c03a60cc, node_mem_map c03c7000
+  Normal zone: 118 pages used for memmap
+  Normal zone: 0 pages reserved
+  Normal zone: 14986 pages, LIFO batch:3
+apb bus clk is 100000000
+Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 14986
+HWCFG = 0x24
+Kernel command line: mem=59M console=ttyAMA1,115200 root=/dev/mtdblock8 rootfstype=jffs2 mtdparts=hinand:128k(startcode),1M(u-bootA),1M(u-bootB),1M(envA),1M(envB),18M(kernel_rootfsA),18M(app_binA),20M(app_exA),18M(kernel_rootfsB),18M(app_binB),20M(app_exB),12160k(cfg) hwcfg=0x24
+PID hash table entries: 256 (order: -2, 1024 bytes)
+Dentry cache hash table entries: 8192 (order: 3, 32768 bytes)
+Inode-cache hash table entries: 4096 (order: 2, 16384 bytes)
+Memory: 59MB = 59MB total
+Memory: 56020k/56020k available, 4396k reserved, 0K highmem
+Virtual kernel memory layout:
+    vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+    fixmap  : 0xfff00000 - 0xfffe0000   ( 896 kB)
+    DMA     : 0xffc00000 - 0xffe00000   (   2 MB)
+    vmalloc : 0xc4000000 - 0xf8000000   ( 832 MB)
+    lowmem  : 0xc0000000 - 0xc3b00000   (  59 MB)
+    pkmap   : 0xbfe00000 - 0xc0000000   (   2 MB)
+    modules : 0xbf000000 - 0xbfe00000   (  14 MB)
+      .init : 0xc0008000 - 0xc0025000   ( 116 kB)
+      .text : 0xc0025000 - 0xc036e000   (3364 kB)
+      .data : 0xc0382000 - 0xc03a69e0   ( 147 kB)
+SLUB: Genslabs=11, HWalign=32, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+Hierarchical RCU implementation.
+NR_IRQS:160
+Calibrating delay loop... 996.14 BogoMIPS (lpj=4980736)
+Mount-cache hash table entries: 512
+CPU: Testing write buffer coherency: ok
+hi_wdt: Auto-Mode!
+hi_wdt: Init sucessfull!
+NET: Registered protocol family 16
+id:0x51163000
+Serial: dw  uart driver
+uart:0: ttyAMA0 at MMIO 0x1010e000 (irq = 77) is a AMBA/DW
+uart:1: ttyAMA1 at MMIO 0x1010f000 (irq = 78) is a AMBA/DW
+console [ttyAMA1] enabled
+bio: create slab <bio-0> at 0
+vgaarb: loaded
+SCSI subsystem initialized
+usbcore: registered new interface driver usbfs
+usbcore: registered new interface driver hub
+usbcore: registered new device driver usb
+cfg80211: Calling CRDA to update world regulatory domain
+Switching to clocksource timer1
+NET: Registered protocol family 2
+IP route cache hash table entries: 1024 (order: 0, 4096 bytes)
+TCP established hash table entries: 2048 (order: 2, 16384 bytes)
+TCP bind hash table entries: 2048 (order: 1, 8192 bytes)
+TCP: Hash tables configured (established 2048 bind 2048)
+TCP reno registered
+UDP hash table entries: 256 (order: 0, 4096 bytes)
+UDP-Lite hash table entries: 256 (order: 0, 4096 bytes)
+NET: Registered protocol family 1
+PCI: CLS 0 bytes, default 32
+JFFS2 version 2.2. (NAND) © 2001-2006 Red Hat, Inc.
+fuse init (API version 7.13)
+yaffs built May 15 2018 11:02:55 Installing. 
+msgmni has been set to 109
+alg: No test for stdrng (krng)
+io scheduler noop registered
+io scheduler deadline registered
+io scheduler cfq registered (default)
+loop: module loaded
+nbd: registered device at major 43
+SCSI Media Changer driver v0.25 
+mtdoops: mtd device (mtddev=name/number) must be supplied
+Spi id table Version 1.22
+Special nand id table Version 1.33
+Nand Flash Controller V301 Device Driver, Version 1.10
+Nand ID: 0xC8 0xD1 0x80 0x95 0x40 0x7F 0x7F 0x7F
+Nand(Hardware): Block:128KB Page:2KB Chip:128MB OOB:64B ECC:4Bytes 
+NAND device: Manufacturer ID: 0xc8, Chip ID: 0xd1 (Unknown F59L1G81MA)
+NAND_ECC_NONE selected by board driver. This is not recommended !!
+12 cmdlinepart partitions found on MTD device hinand
+Creating 12 MTD partitions on "hinand":
+0x000000000000-0x000000020000 : "startcode"
+0x000000020000-0x000000120000 : "u-bootA"
+0x000000120000-0x000000220000 : "u-bootB"
+0x000000220000-0x000000320000 : "envA"
+0x000000320000-0x000000420000 : "envB"
+0x000000420000-0x000001620000 : "kernel_rootfsA"
+0x000001620000-0x000002820000 : "app_binA"
+0x000002820000-0x000003c20000 : "app_exA"
+0x000003c20000-0x000004e20000 : "kernel_rootfsB"
+0x000004e20000-0x000006020000 : "app_binB"
+0x000006020000-0x000007420000 : "app_exB"
+0x000007420000-0x000008000000 : "cfg"
+sky2: driver version 1.27
+PPP generic driver version 2.4.2
+NET: Registered protocol family 24
+Initializing USB Mass Storage driver...
+usbcore: registered new interface driver usb-storage
+USB Mass Storage support registered.
+Netfilter messages via NETLINK v0.30.
+xt_time: kernel timezone is -0000
+ip_tables: (C) 2000-2006 Netfilter Core Team
+arp_tables: (C) 2002 David S. Miller
+NET: Registered protocol family 17
+Bridge firewalling registered
+do_mount_root name=/dev/root, fs=jffs2, flags=32768, data=0x0
+Empty flash at 0x00ec54ec ends at 0x00ec5800
+Empty flash at 0x00ec7164 ends at 0x00ec7800
+Empty flash at 0x00edef20 ends at 0x00edf000
+sys_open fd >=0 3
+VFS: Mounted root (jffs2 filesystem) on device 31:8.
+Freeing init memory: 116K
+Empty flash at 0x00a678cc ends at 0x00a68000
+Empty flash at 0x00e1eefc ends at 0x00e1f000
+hi_kbasic: module license 'HSAN Tech.' taints kernel.
+Disabling lock debugging due to kernel taint
+
+ SYSCTL module is installed
+
+ MDIO module is installed
+
+ PIE module is installed
+
+ DELIVERY module is installed
+
+ GPIO module is installed
+
+ I2C module is installed
+
+ TIMER module is installed
+
+ SPI module is installed
+
+ HW module is installed
+input hwcfg = 0x24 
+
+ BRIDGE module is installed
+
+ GPON module is installed
+
+ EPON module is installed
+
+ L3 module is installed
+
+ OAM module is installed
+
+ CNT module is installed
+HAL init.
+
+ hrw module is installed!
+dapter multicast module install successfully, version: Mar  1 2018 14:59:44 
+
+ diag_chip module is installed!
+JFFS2 notice: (39) check_node_data: wrong data CRC in data node at 0x00a70d80: read 0xe21e3d9, calculated 0xf50a0a85.
+
+ Optical driver module is installed
+
+ Operate driver module is installed
+insmod hi_kslic_common.ko succ!
+
+hisilicon kvoip module install successfully ...!
+r
+ kslic module insmod successfully ...!
+nf_conntrack version 0.5.0 (877 buckets, 3508 max)
+CONFIG_NF_CT_ACCT is deprecated and will be removed soon. Please use
+nf_conntrack.acct=1 kernel parameter, acct=1 nf_conntrack module option or
+sysctl net.netfilter.nf_conntrack_acct=1 to enable it.
+IPv4 over IPv4 tunneling driver
+NET: Registered protocol family 10
+lo: Disabled Privacy Extensions
+tunl0: Disabled Privacy Extensions
+IPv6 over IPv4 tunneling driver
+sit0: Disabled Privacy Extensions
+ip6tnl0: Disabled Privacy Extensions
+
+CFE adapter module install successfully ...!
+
+CFE hw_adpter_l3 module install successfully ...!
+
+CFE module install successfully ...!
+
+ CFE_FH_MARK module install successfully ...!
+pie0: no IPv6 routers present
+JFFS2 notice: (26) check_node_data: wrong data CRC in data node at 0x00f61b24: read 0x68ee4681, calculated 0xd04ea7d7.
+fhdrv_kdrv_board Init Done, May 15 2018, 11:05:07
+hwcfg = 0x24
+Config GPIO[32]	IN_SYS_RESET     Done.
+Config GPIO[31]	OUT_PON_LED      Done.
+Config GPIO[6]	OUT_VOIP_LED     Done.
+Config GPIO[30]	OUT_LOS_LED      Done.
+Config GPIO[14]	IN_LED_BUTTON    Done.
+Config GPIO[33]	OUT_LED_SWITCH   Done.
+fhdrv_kdrv_board_impl Init Done, May 15 2018, 11:05:14
+GPON init success ! 
+
+device eth0 entered promiscuous mode
+device eth1 entered promiscuous mode
+device eth2 entered promiscuous mode
+br0: port 3(eth2) entering learning state
+br0: port 2(eth1) entering learning state
+br0: port 1(eth0) entering learning state
+
+The link of PHY1 is up, uni_phy
+
+phy1,status:f100    
+br0: no IPv6 routers present
+wan0: no IPv6 routers present
+voip2: no IPv6 routers present
+wan1: no IPv6 routers present
+eth3: no IPv6 routers present
+voip1: no IPv6 routers present
+wan3: no IPv6 routers present
+tel0: no IPv6 routers present
+eth1: no IPv6 routers present
+eth2: no IPv6 routers present
+voip0: no IPv6 routers present
+wan2: no IPv6 routers present
+eth0: no IPv6 routers present
+br0: port 3(eth2) entering forwarding state
+br0: port 2(eth1) entering forwarding state
+br0: port 1(eth0) entering forwarding state

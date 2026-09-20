@@ -1,0 +1,86 @@
+=== iomem ===
+00000000-00000064 : hinand
+1010e000-1010efff : uart:0
+  1010e000-1010efff : uart-dw
+1010f000-1010ffff : uart:1
+  1010f000-1010ffff : uart-dw
+10a30000-10a30100 : hinand
+20000000-20000880 : hinand
+80500000-83ffffff : System RAM
+  80525000-8086dfff : Kernel text
+  80882000-808c3963 : Kernel data
+
+=== ioports ===
+
+=== interrupts ===
+           CPU0
+ 78:      18436         GIC  uart-dw
+ 79:     816792         GIC  SD5116 System Timer Tick, Free Timer
+ 80:          0         GIC  timer2_3 int
+119:     135191         GIC  PIE
+124:          0         GIC  hi_dp_3ah
+125:          0         GIC  hi_dp_l2
+126:          0         GIC  hi_dp_l3
+130:          0         GIC  hi_dp_prbs_send
+134:          0         GIC  hi_dp_gpon_lp
+141:          0         GIC  hi_dp_gpon
+142:          0         GIC  hi_dp_gpon_rogue_onu
+143:          0         GIC  hi_dp_gpon_silent_onu
+144:          0         GIC  hi_dp_gpon_fwi
+Err:          0
+
+=== devices ===
+Character devices:
+  1 mem
+  2 pty
+  3 ttyp
+  5 /dev/tty
+  5 /dev/console
+  5 /dev/ptmx
+ 10 misc
+ 13 input
+ 21 sg
+ 86 ch
+ 90 mtd
+108 ppp
+128 ptm
+136 pts
+180 usb
+189 usb_device
+204 ttyAMA
+254 fhdrv_kdrv_board
+
+Block devices:
+259 blkext
+  7 loop
+  8 sd
+ 31 mtdblock
+ 43 nbd
+ 65 sd
+ 66 sd
+ 67 sd
+ 68 sd
+ 69 sd
+ 70 sd
+ 71 sd
+128 sd
+129 sd
+130 sd
+131 sd
+132 sd
+133 sd
+134 sd
+135 sd
+179 mmc
+240 romblock
+
+=== misc ===
+  3 DELIVERY
+ 20 hi_ipc
+ 58 network_throughput
+ 59 network_latency
+ 60 cpu_dma_latency
+ 61 ubi_ctrl
+ 62 tgt
+229 fuse
+ 63 vga_arbiter

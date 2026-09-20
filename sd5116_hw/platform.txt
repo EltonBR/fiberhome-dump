@@ -1,0 +1,24 @@
+=== platform devices ===
+total 0
+drwxr-xr-x    2 root     0                0 Jan  1 00:01 .
+drwxr-xr-x    4 root     0                0 Jan  1 00:01 ..
+lrwxrwxrwx    1 root     0                0 Jan  1 00:01 hinand -> ../../../devices/platform/hinand
+lrwxrwxrwx    1 root     0                0 Jan  1 00:01 regulatory.0 -> ../../../devices/platform/regulatory.0
+
+=== platform drivers ===
+total 0
+drwxr-xr-x    4 root     0                0 Jan  1 00:01 .
+drwxr-xr-x    4 root     0                0 Jan  1 00:01 ..
+drwxr-xr-x    2 root     0                0 Jan  1 00:01 hinand
+drwxr-xr-x    2 root     0                0 Jan  1 00:01 physmap-flash
+
+=== detailed ===
+
+--- hinand ---
+lrwxrwxrwx    1 root     0                0 Jan  1 00:01 /sys/bus/platform/devices/hinand -> ../../../devices/platform/hinand
+driver=../../../bus/platform/drivers/hinand
+modalias=platform:hinand
+
+--- regulatory.0 ---
+lrwxrwxrwx    1 root     0                0 Jan  1 00:01 /sys/bus/platform/devices/regulatory.0 -> ../../../devices/platform/regulatory.0
+modalias=platform:regulatory

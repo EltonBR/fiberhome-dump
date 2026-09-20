@@ -1,0 +1,148 @@
+# Inspeção estática
+Gerado (UTC): 2026-09-18T21:23:02Z
+
+## SHA-256
+7a7af71b3335a59b1681456ac9cbc108d17cd654fc2d3b8bbd3bd3d1fb073fd8  firmware-original/mtd0-startcode.bin
+1a584727eda858217e8abba20103b1f1393c733060328ef9af9138750f845219  firmware-original/mtd1-ubootA.bin
+c0fda8fcfec981c4881e0a42bf717c3f6d48eda774b6c91f651b4e7a39d2634b  firmware-original/mtd10-app_exB.bin
+bb7fd5bce07aadf35835f0a95566ee45b02978a1addcc3451631245214516619  firmware-original/mtd11-cfg.bin
+1a584727eda858217e8abba20103b1f1393c733060328ef9af9138750f845219  firmware-original/mtd2-ubootB.bin
+ea4fbdf58fb232b3e5c0dc643365382390a481a69556e76f969600398949193d  firmware-original/mtd3-envA.bin
+ea4fbdf58fb232b3e5c0dc643365382390a481a69556e76f969600398949193d  firmware-original/mtd4-envB.bin
+5850e73b0465a6d61d5fcaa8b196183c0879b71afb01ab8cd0ab701c3b2f277a  firmware-original/mtd5-kernel_rootfsA.bin
+61f43a6ea3d462a04aac3dc110f8f8c15cdcf9d4004ee6e12aede0839caf8ac6  firmware-original/mtd6-app_binA.bin
+6da601354c882371de1c625fd7b0c2dc754a2159833d75cbed73d6ca025570b4  firmware-original/mtd7-app_exA.bin
+2573d144fe45ced710640e83ef6a7ae35018dc92fc11db44f239f69ec4ec6d4c  firmware-original/mtd8-kernel_rootfsB.bin
+08f3ae7b614512e7829d518c1222a9f8181bcf5860cbd79b8a98df28647002a0  firmware-original/mtd9-app_binB.bin
+
+## SHA-1
+9b401c01bcfbbd37685dbeff554b6e467b6c7c49  firmware-original/mtd0-startcode.bin
+b0eb0384d52542a87581cd44d5d42ef85b16ebe5  firmware-original/mtd1-ubootA.bin
+05d087e57917f8238627f1fd17ab73d560e220de  firmware-original/mtd10-app_exB.bin
+6fbccf5bee76c95e95cbdb1244fdd86f92864fad  firmware-original/mtd11-cfg.bin
+b0eb0384d52542a87581cd44d5d42ef85b16ebe5  firmware-original/mtd2-ubootB.bin
+1cb8d3aef05262492f877e720976e573771a4545  firmware-original/mtd3-envA.bin
+1cb8d3aef05262492f877e720976e573771a4545  firmware-original/mtd4-envB.bin
+d81e3801465e4ef6032994e5a9ff870ab8977e68  firmware-original/mtd5-kernel_rootfsA.bin
+10a6bf8b36aae7ce9c2921b8da26bcb305a63bf2  firmware-original/mtd6-app_binA.bin
+0f7ec7efab7bc25298f44707088afef12fa87de1  firmware-original/mtd7-app_exA.bin
+e4dba18fef56147f494056c4e2377fa45e977692  firmware-original/mtd8-kernel_rootfsB.bin
+627bbe8d20c5edd32d0b9ec6782f277ab1688319  firmware-original/mtd9-app_binB.bin
+
+## MD5
+cb256b2f1774e9885b5da839bc24287b  firmware-original/mtd0-startcode.bin
+b668b4b9f378614cb857884265ca7e17  firmware-original/mtd1-ubootA.bin
+78ce5802cd3932213a7d245e6edcfbe6  firmware-original/mtd10-app_exB.bin
+526a640c345cc5c69399fcf4c26625ae  firmware-original/mtd11-cfg.bin
+b668b4b9f378614cb857884265ca7e17  firmware-original/mtd2-ubootB.bin
+8fbd913b1895b95e1e53edeb0f0ef4d6  firmware-original/mtd3-envA.bin
+8fbd913b1895b95e1e53edeb0f0ef4d6  firmware-original/mtd4-envB.bin
+aad52d0a27c0a7799c8e21b30772ddcf  firmware-original/mtd5-kernel_rootfsA.bin
+93c425ef9b16c493cfd314309a31655e  firmware-original/mtd6-app_binA.bin
+164b3090f69f04186949cd7b7fd1437d  firmware-original/mtd7-app_exA.bin
+42e1f20b9855e8380843de9a4289b33e  firmware-original/mtd8-kernel_rootfsB.bin
+2a6b0d942e1d5e911f5e82cc72129373  firmware-original/mtd9-app_binB.bin
+
+## Identificação de arquivos
+firmware-original/mtd0-startcode.bin:      data
+firmware-original/mtd1-ubootA.bin:         data
+firmware-original/mtd10-app_exB.bin:       Linux jffs2 filesystem data little endian
+firmware-original/mtd11-cfg.bin:           ISO-8859 text, with very long lines (65536), with no line terminators
+firmware-original/mtd2-ubootB.bin:         data
+firmware-original/mtd3-envA.bin:           data
+firmware-original/mtd4-envB.bin:           data
+firmware-original/mtd5-kernel_rootfsA.bin: Linux jffs2 filesystem data little endian
+firmware-original/mtd6-app_binA.bin:       Linux jffs2 filesystem data little endian
+firmware-original/mtd7-app_exA.bin:        Linux jffs2 filesystem data little endian
+firmware-original/mtd8-kernel_rootfsB.bin: Linux jffs2 filesystem data little endian
+firmware-original/mtd9-app_binB.bin:       Linux jffs2 filesystem data little endian
+
+## Assinaturas do Binwalk
+
+DECIMAL       HEXADECIMAL     DESCRIPTION
+--------------------------------------------------------------------------------
+93884         0x16EBC         CRC32 polynomial table, little endian
+
+
+DECIMAL       HEXADECIMAL     DESCRIPTION
+--------------------------------------------------------------------------------
+140192        0x223A0         CRC32 polynomial table, little endian
+
+
+DECIMAL       HEXADECIMAL     DESCRIPTION
+--------------------------------------------------------------------------------
+0             0x0             JFFS2 filesystem, little endian
+
+
+DECIMAL       HEXADECIMAL     DESCRIPTION
+--------------------------------------------------------------------------------
+7602176       0x740000        JFFS2 filesystem, little endian
+
+
+DECIMAL       HEXADECIMAL     DESCRIPTION
+--------------------------------------------------------------------------------
+140192        0x223A0         CRC32 polynomial table, little endian
+
+
+DECIMAL       HEXADECIMAL     DESCRIPTION
+--------------------------------------------------------------------------------
+
+
+DECIMAL       HEXADECIMAL     DESCRIPTION
+--------------------------------------------------------------------------------
+
+
+DECIMAL       HEXADECIMAL     DESCRIPTION
+--------------------------------------------------------------------------------
+0             0x0             JFFS2 filesystem, little endian
+
+
+DECIMAL       HEXADECIMAL     DESCRIPTION
+--------------------------------------------------------------------------------
+0             0x0             JFFS2 filesystem, little endian
+
+
+DECIMAL       HEXADECIMAL     DESCRIPTION
+--------------------------------------------------------------------------------
+0             0x0             JFFS2 filesystem, little endian
+
+
+DECIMAL       HEXADECIMAL     DESCRIPTION
+--------------------------------------------------------------------------------
+0             0x0             JFFS2 filesystem, little endian
+
+
+DECIMAL       HEXADECIMAL     DESCRIPTION
+--------------------------------------------------------------------------------
+0             0x0             JFFS2 filesystem, little endian
+
+
+## Environment do U-Boot (strings imprimíveis)
+bootargs_flag=mem=%dM console=ttyAMA1,115200 root=/dev/mtdblock%d rootfstype=jffs2 mtdparts=hinand:128k(startcode),1M(u-bootA),1M(u-bootB),1M(envA),1M(envB),18M(kernel_rootfsA),18M(app_binA),20M(app_exA),18M(kernel_rootfsB),18M(app_binB),20M(app_exB),12160k(cfg)
+uboot_flag=0
+uboot_curr_flag=0
+baudrate=115200
+ipaddr=192.168.0.10
+serverip=192.168.0.1
+netmask=255.255.255.0
+bootfile="uImage"
+ponmac=00:0a:0b:0c:0d:1e
+NumMacAddrs=8
+bootdelay=2
+bootcmd=fsload uImage;bootm
+kernel_rootfs_flag=1
+app_bin_flag=1
+app_ex_flag=1
+stdin=serial
+stdout=serial
+stderr=serial
+verify=y
+ver=U-Boot 2010.03-svn445507 (Mar 17 2016 - 20:10:57)
+bootargs=mem=59M console=ttyAMA1,115200 root=/dev/mtdblock8 rootfstype=jffs2 mtdparts=hinand:128k(startcode),1M(u-bootA),1M(u-bootB),1M(envA),1M(envB),18M(kernel_rootfsA),18M(app_binA),20M(app_exA),18M(kernel_rootfsB),18M(app_binB),20M(app_exB),12160k(cfg)
+kernel_rootfs_curr_flag=1
+ethaddr=14:22:33:7D:B9:40
+snoui=92
+fhsnoui_once=y
+hwcfg=0x24
+app_bin_curr_flag=1
+app_ex_curr_flag=1

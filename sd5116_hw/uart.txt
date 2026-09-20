@@ -1,0 +1,15 @@
+=== tty ===
+crw-rw----    1 root     0         204,  64 Jan  1 00:00 /dev/ttyAMA0
+crw-rw----    1 root     0         204,  65 Jan  1 02:16 /dev/ttyAMA1
+
+=== serial proc ===
+
+=== IRQ ===
+ 78:      18600         GIC  uart-dw
+
+=== dmesg ===
+Kernel command line: mem=59M console=ttyAMA1,115200 root=/dev/mtdblock8 rootfstype=jffs2 mtdparts=hinand:128k(startcode),1M(u-bootA),1M(u-bootB),1M(envA),1M(envB),18M(kernel_rootfsA),18M(app_binA),20M(app_exA),18M(kernel_rootfsB),18M(app_binB),20M(app_exB),12160k(cfg) hwcfg=0x24
+Serial: dw  uart driver
+uart:0: ttyAMA0 at MMIO 0x1010e000 (irq = 77) is a AMBA/DW
+uart:1: ttyAMA1 at MMIO 0x1010f000 (irq = 78) is a AMBA/DW
+console [ttyAMA1] enabled

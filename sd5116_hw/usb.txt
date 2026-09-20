@@ -1,0 +1,52 @@
+=== USB sysfs ===
+total 0
+drwxr-xr-x    4 root     0                0 Jan  1 00:01 .
+drwxr-xr-x   10 root     0                0 Jan  1 00:01 ..
+drwxr-xr-x    2 root     0                0 Jan  1 00:01 devices
+drwxr-xr-x    6 root     0                0 Jan  1 00:01 drivers
+-rw-r--r--    1 root     0             4096 Jan  1 00:01 drivers_autoprobe
+--w-------    1 root     0             4096 Jan  1 00:01 drivers_probe
+--w-------    1 root     0             4096 Jan  1 00:01 uevent
+total 0
+drwxr-xr-x    2 root     0                0 Jan  1 00:01 .
+drwxr-xr-x    4 root     0                0 Jan  1 00:01 ..
+
+=== USB devices detailed ===
+
+=== USB proc ===
+
+=== USB drivers ===
+total 0
+drwxr-xr-x    6 root     0                0 Jan  1 00:01 .
+drwxr-xr-x    4 root     0                0 Jan  1 00:01 ..
+drwxr-xr-x    2 root     0                0 Jan  1 00:01 hub
+drwxr-xr-x    2 root     0                0 Jan  1 00:01 usb
+drwxr-xr-x    2 root     0                0 Jan  1 00:01 usb-storage
+drwxr-xr-x    2 root     0                0 Jan  1 00:01 usbfs
+
+=== USB host ===
+/sys/bus/usb
+/sys/bus/usb/drivers/usbfs
+/sys/bus/usb/drivers/usb
+/sys/bus/usb/drivers/usb-storage
+/sys/class/usb_device
+/sys/module/kernel/parameters/nousb
+/sys/module/usbcore
+/sys/module/usbcore/parameters/usbfs_snoop
+/sys/module/usbcore/drivers/usb:usbfs
+/sys/module/usbcore/drivers/usb:hub
+/sys/module/ehci_hcd
+/sys/module/usb_storage
+/sys/module/usb_storage/drivers/usb:usb-storage
+
+=== USB modules ===
+
+=== USB interrupts ===
+
+=== USB kernel log ===
+usbcore: registered new interface driver usbfs
+usbcore: registered new interface driver hub
+usbcore: registered new device driver usb
+Initializing USB Mass Storage driver...
+usbcore: registered new interface driver usb-storage
+USB Mass Storage support registered.

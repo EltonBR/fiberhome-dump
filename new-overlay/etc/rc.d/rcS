@@ -1,0 +1,134 @@
+#! /bin/sh
+source /etc/profile
+
+# Clearing the console to fullscreen
+clear
+
+echo "
+            _ _ _ _ _ _ _ _ _ _ _ _
+            \  _  _   _  _ _ ___
+            / /__/ \ |_/
+           / __   /  -  _ ___
+          / /  / /  / /
+  _ _ _ _/ /  /  \_/  \_ ______
+___________\___\__________________
+"
+echo "mount file system"
+
+mount -t proc  proc /proc
+mount -t sysfs sysfs /sys
+mount -t tmpfs tmpfs /dev
+mount -t tmpfs -o nodev,size=512m none /tmp
+mount -t tmpfs -o nodev,size=512m,mode=755 none /var
+
+mkdir /dev/shm
+
+mkdir -p /dev/pts
+mount -t devpts devpts /dev/pts
+
+#telnet通过26号端口进入linux shell下，如果默认开启，会有安全隐患，所以改成由命令行模块控制开启、退出
+telnetd -p 23
+
+mdev -s
+echo /sbin/mdev > /proc/sys/kernel/hotplug
+
+# 引导挂载使用cbb后更改名字
+/bin/fhdrv_kdrv_mount
+
+echo "
+|-----------------------  HSAN: Load Driver Modules  -------------------------|"
+
+# System modules
+	insmod  /lib/hsan/ko/service/hi_kbasic.ko
+	insmod  /lib/hsan/ko/service/hi_kipc.ko
+	insmod  /lib/hsan/ko/service/hi_klog_cmd.ko
+
+# Driver modules
+        insmod  /lib/hsan/ko/driver/hi_sysctl.ko                                
+        insmod  /lib/hsan/ko/driver/hi_mdio.ko                                  
+        insmod  /lib/hsan/ko/driver/hi_pie.ko                                   
+        insmod  /lib/hsan/ko/driver/delivery.ko                                                                  
+        insmod  /lib/hsan/ko/driver/hi_gpio.ko                                  
+        insmod  /lib/hsan/ko/driver/hi_i2c.ko                                   
+        insmod  /lib/hsan/ko/driver/hi_timer.ko                                 
+        #insmod  /lib/hsan/ko/driver/hi_ksim.ko                                  
+        #insmod  /lib/hsan/ko/driver/hi_sci.ko                                  
+        insmod  /lib/hsan/ko/driver/hi_spi.ko                                   
+        insmod  /lib/hsan/ko/driver/hi_hw.ko                               
+        #insmod  /lib/hsan/ko/driver/hi_uart.ko                                 
+        #insmod  /lib/hsan/ko/driver/hi_wdt.ko                                  
+        # 需要的参数在opensrc\kernel\linux-2.6.34.10\init 中导出到文件
+        DEV=`cat /proc/driver/fh_hw_cfg_for_hi_bridge | awk '{print $3}'`
+        insmod  /lib/hsan/ko/driver/hi_bridge.ko  hwcfg=$DEV
+        insmod  /lib/hsan/ko/driver/hi_gpon.ko                                  
+        insmod  /lib/hsan/ko/driver/hi_epon.ko                                  
+        insmod  /lib/hsan/ko/driver/hi_l3.ko                                    
+        insmod  /lib/hsan/ko/driver/hi_oam.ko                                   
+        insmod  /lib/hsan/ko/driver/hi_cnt.ko      
+  
+# Service modules
+	insmod  /lib/hsan/ko/service/hi_khal.ko
+	insmod  /lib/hsan/ko/test/hi_khrw.ko
+	#insmod  /lib/hsan/ko/sample/hi_kvif.ko
+    	insmod  /lib/hsan/ko/sample/hi_kmc_adapter.ko	
+    	insmod  /lib/hsan/ko/driver/hi_diag_chip.ko		
+	insmod /lib/hsan/ko/sample/hi_knet_adapter.ko    
+	insmod  /lib/hsan/ko/driver/hi_koptical.ko                              
+    	insmod  /lib/hsan/ko/driver/hi_koperate.ko
+	#insmod /lib/hsan/ko/driver/hi_kslic_common.ko
+	#insmod  /lib/hsan/ko/service/hi_kvoip.ko
+	#/usr/sbin/hi_slic_preinit
+	
+
+# netfilter modules
+	insmod /lib/modules/2.6.34.10/kernel/net/netfilter/nf_conntrack.ko
+	insmod /lib/modules/2.6.34.10/kernel/net/ipv4/netfilter/nf_defrag_ipv4.ko
+	insmod /lib/modules/2.6.34.10/kernel/net/ipv4/netfilter/nf_conntrack_ipv4.ko 
+	#insmod /lib/modules/2.6.34.10/kernel/net/netfilter/nf_conntrack_tftp.ko
+	#insmod /lib/modules/2.6.34.10/kernel/net/netfilter/nf_conntrack_ftp.ko
+	#insmod /lib/modules/2.6.34.10/kernel/net/netfilter/xt_connmark.ko
+	#insmod /lib/modules/2.6.34.10/kernel/net/netfilter/xt_state.ko
+	#insmod /lib/modules/2.6.34.10/kernel/net/netfilter/xt_helper.ko
+	#insmod /lib/modules/2.6.34.10/kernel/net/ipv4/netfilter/nf_nat.ko
+	#insmod /lib/modules/2.6.34.10/kernel/net/ipv4/netfilter/nf_nat_ftp.ko
+	#insmod /lib/modules/2.6.34.10/kernel/net/ipv4/netfilter/nf_nat_tftp.ko
+
+	insmod /lib/modules/2.6.34.10/kernel/net/ipv4/tunnel4.ko
+	insmod /lib/modules/2.6.34.10/kernel/net/ipv4/xfrm4_tunnel.ko
+	insmod /lib/modules/2.6.34.10/kernel/net/ipv4/ipip.ko
+	insmod /lib/modules/2.6.34.10/kernel/net/ipv6/ipv6.ko
+	insmod /lib/modules/2.6.34.10/kernel/net/ipv6/tunnel6.ko
+	insmod /lib/modules/2.6.34.10/kernel/net/ipv6/sit.ko
+	insmod /lib/modules/2.6.34.10/kernel/net/ipv6/ip6_tunnel.ko
+	insmod /lib/modules/2.6.34.10/kernel/net/ipv6/netfilter/nf_conntrack_ipv6.ko
+
+# cfe modules 	
+	insmod /lib/hsan/ko/service/hi_kcfe_adapter.ko
+	insmod /lib/hsan/ko/service/hi_kcfe_adapter_l3.ko
+	insmod /lib/hsan/ko/service/hi_kcfe_res.ko
+	insmod /lib/hsan/ko/service/hi_kcfe_fh_mark.ko
+
+ifconfig pie0 192.168.0.10 netmask 255.255.255.0
+
+# 文件系统定制
+# upnp 支持
+#ln -sf /fhcfg/etc/linuxigd $ROOTFS/etc/linuxigd
+#ln -sf /fh/extend/upnp/libupnp.so.2.0.1 $ROOTFS/lib/libupnp.so
+#ln -sf /fh/extend/upnp/libupnp.so.2.0.1 $ROOTFS/lib/libupnp.so.2
+#ln -sf /fh/extend/upnp/libixml.so.2.0.0 $ROOTFS/lib/libixml.so
+#ln -sf /fh/extend/upnp/libixml.so.2.0.0 $ROOTFS/lib/libixml.so.2
+#ln -sf /fh/extend/upnp/libthreadutil.so.2.0.0 $ROOTFS/lib/libthreadutil.so
+#ln -sf /fh/extend/upnp/libthreadutil.so.2.0.0 $ROOTFS/lib/libthreadutil.so.2
+#ln -sf /fh/extend/upnp/upnpd.conf $ROOTFS/etc/upnpd.conf
+#echo "rootfs customized!" 
+
+# TODO: 主要分区设置为只读
+#mount / -o ro,remount
+#mount /fh/extend -o ro,remount
+#mount /fh/bin -o ro,remount
+#echo "/,/fh/bin,/fh/extend read only!"
+
+echo "initialize.sh... "
+/fh/extend/initialize.sh
+
+/bin/sh

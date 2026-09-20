@@ -1,0 +1,43 @@
+=== interfaces VOIP ===
+11: tel0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1526 qdisc pfifo_fast qlen 1000
+    link/ether 14:22:33:7d:b9:40 brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::1622:33ff:fe7d:b940/64 scope link 
+       valid_lft forever preferred_lft forever
+12: voip1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1526 qdisc pfifo_fast qlen 1000
+    link/ether 14:22:33:7d:b9:41 brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::1622:33ff:fe7d:b941/64 scope link 
+       valid_lft forever preferred_lft forever
+13: voip0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast qlen 1000
+    link/ether 14:22:33:7d:b9:41 brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::1622:33ff:fe7d:b941/64 scope link 
+       valid_lft forever preferred_lft forever
+14: voip2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast qlen 1000
+    link/ether 14:22:33:7d:b9:42 brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::1622:33ff:fe7d:b942/64 scope link 
+       valid_lft forever preferred_lft forever
+15: wan0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1526 qdisc pfifo_fast qlen 1000
+    link/ether 14:22:33:7d:b9:43 brd ff:ff:ff:ff:ff:ff
+
+=== modules ===
+hi_kslic_lt 5939 0 - Live 0xbf294000 (P)
+hi_kvoip 505324 0 - Live 0xbf202000 (P)
+hi_kslic_common 15258 0 - Live 0xbf1f9000
+hi_koperate 1177 2 hi_kslic_lt,hi_kvoip, Live 0xbf1f3000 (P)
+hi_bridge 224175 10 hi_kvoip,hi_koperate,hi_koptical,hi_diag_chip,hi_khal,hi_cnt,hi_oam,hi_l3,hi_epon,hi_gpon, Live 0xbf063000 (P)
+hi_hw 11582 3 hi_kslic_lt,hi_kvoip,hi_kslic_common, Live 0xbf05b000 (P)
+hi_spi 14178 3 hi_kslic_lt,hi_kslic_common,hi_khal, Live 0xbf052000 (P)
+hi_gpio 2529 4 hi_kslic_lt,hi_kslic_common,hi_diag_chip,hi_khal, Live 0xbf03f000 (P)
+hi_kbasic 24723 13 hi_kcfe_fh_mark,hi_kcfe_res,hi_kcfe_adapter_l3,hi_kcfe_adapter,hi_kslic_lt,hi_kvoip,hi_kslic_common,hi_knet_adapter,hi_kmc_adapter,hi_khrw,hi_khal,hi_klog_cmd,hi_kipc, Live 0xbf000000 (P)
+
+=== IRQ ===
+
+=== device nodes ===
+
+=== dmesg ===
+insmod hi_kslic_common.ko succ!
+hisilicon kvoip module install successfully ...!
+ kslic module insmod successfully ...!
+Config GPIO[6]	OUT_VOIP_LED     Done.
+voip2: no IPv6 routers present
+voip1: no IPv6 routers present
+voip0: no IPv6 routers present

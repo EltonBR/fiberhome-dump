@@ -1,0 +1,8 @@
+*.o
+
+# Binários compilados por cada projeto local.
+projects/*/bin/
+
+# Toolchain local obtida da Bootlin; manter somente README e checksum no Git.
+toolchains/armv5-eabi--uclibc--stable-2025.08-1/
+extracted/*

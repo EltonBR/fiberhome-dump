@@ -1,0 +1,19 @@
+=== /proc/driver ===
+total 0
+dr-xr-xr-x    2 root     0                0 Jan  1 02:15 .
+dr-xr-xr-x   40 root     0                0 Jan  1 00:00 ..
+-r--r--r--    1 root     0                0 Jan  1 02:15 fh_bsp_gpio_list
+-r--r--r--    1 root     0                0 Jan  1 02:15 fh_bsp_mounted_rootfs
+-r--r--r--    1 root     0                0 Jan  1 02:15 fh_hw_cfg
+-rw-rwxr--    1 root     0                0 Jan  1 02:15 fh_hw_cfg_for_hi_bridge
+-r--r--r--    1 root     0                0 Jan  1 02:15 fhdrv_kdrv_cpu_mac
+-r--r--r--    1 root     0                0 Jan  1 02:15 fhdrv_kdrv_mac_num
+-r--r--r--    1 root     0                0 Jan  1 02:15 fhdrv_kdrv_pon_mac
+-r--r--r--    1 root     0                0 Jan  1 02:15 fhdrv_kdrv_snoui
+
+=== fh_hw_cfg ===
+hwcfg : 0x24
+
+=== /proc/device-tree ===
+
+=== hwcfg related ===

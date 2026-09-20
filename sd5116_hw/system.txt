@@ -1,0 +1,61 @@
+DATE:
+Thu Jan  1 02:15:49 UTC 1970
+
+UNAME:
+Linux (none) 2.6.34.10 #1 Tue May 15 11:03:12 CST 2018 armv7l GNU/Linux
+
+CPUINFO:
+Processor	: ARMv7 Processor rev 1 (v7l)
+BogoMIPS	: 996.14
+Features	: swp half thumb fastmult edsp 
+CPU implementer	: 0x41
+CPU architecture: 7
+CPU variant	: 0x4
+CPU part	: 0xc09
+CPU revision	: 1
+
+Hardware	: SD5116
+Revision	: 0000
+Serial		: 0000000000000000
+
+CMDLINE:
+mem=59M console=ttyAMA1,115200 root=/dev/mtdblock8 rootfstype=jffs2 mtdparts=hinand:128k(startcode),1M(u-bootA),1M(u-bootB),1M(envA),1M(envB),18M(kernel_rootfsA),18M(app_binA),20M(app_exA),18M(kernel_rootfsB),18M(app_binB),20M(app_exB),12160k(cfg) hwcfg=0x24
+
+MEMINFO:
+MemTotal:          56136 kB
+MemFree:           34104 kB
+Buffers:               0 kB
+Cached:             5624 kB
+SwapCached:            0 kB
+Active:             1440 kB
+Inactive:           4520 kB
+Active(anon):        352 kB
+Inactive(anon):       12 kB
+Active(file):       1088 kB
+Inactive(file):     4508 kB
+Unevictable:           0 kB
+Mlocked:               0 kB
+HighTotal:             0 kB
+HighFree:              0 kB
+LowTotal:          56136 kB
+LowFree:           34104 kB
+SwapTotal:             0 kB
+SwapFree:              0 kB
+Dirty:                 0 kB
+Writeback:             0 kB
+AnonPages:           356 kB
+Mapped:              512 kB
+Shmem:                28 kB
+Slab:               8068 kB
+SReclaimable:       4484 kB
+SUnreclaim:         3584 kB
+KernelStack:         248 kB
+PageTables:           60 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:       28068 kB
+Committed_AS:       1088 kB
+VmallocTotal:     851968 kB
+VmallocUsed:         772 kB
+VmallocChunk:     847536 kB
