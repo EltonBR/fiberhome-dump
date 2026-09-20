@@ -116,7 +116,9 @@ A função interna abre o dispositivo de placa, chama `ioctl(fd, comando,
 Isto levou diretamente à implementação de
 [`libs/libfh_gpio/src/fh_gpio.c`](../libs/libfh_gpio/src/fh_gpio.c). A
 biblioteca executa a mesma sequência do helper: mux, direção e leitura ou
-escrita. Ela não chama `kdrv_debug` e não depende de shell.
+escrita. Ela não chama `kdrv_debug` e não depende de shell. Os testes atuais
+que a consomem estão em
+[`projects/sd5116-cli/src/onu_gpio_test.c`](../projects/sd5116-cli/src/onu_gpio_test.c).
 
 ### 2.2 Como os LEDs e botões receberam função
 
@@ -131,9 +133,9 @@ de pressão, usando a ABI recuperada. O teste decisivo para LED foi escrever os
 dois níveis e observar a placa; para botão foi configurar entrada, ler em
 repouso, pressionar e ler novamente.
 
-O binário criado durante essa etapa é
-[`projects/sd5116-cli/src/onu_led_direct.c`](../projects/sd5116-cli/src/onu_led_direct.c).
-Ele contém a ABI acima e a tabela de pinos medida nesta unidade. A tabela não
+O teste atual é
+[`projects/sd5116-cli/src/onu_gpio_test.c`](../projects/sd5116-cli/src/onu_gpio_test.c),
+que consome a biblioteca em vez de repetir a ABI. A tabela de pinos medida não
 deve ser copiada para outra PCB sem repetir o procedimento.
 
 No LED LAN1, a escrita direta em GPIO 12 manteve o LED aceso mesmo após evento
@@ -236,10 +238,10 @@ O valor de `baud_rate` não foi extrapolado por tentativa: o descritor CLI
 
 ### 3.2 Validação runtime usada
 
-O primeiro wrapper, `projects/sd5116-cli/src/onu_i2c.c`, continua usando
-`/fh/extend/kdrv_debug`. Ele captura stdout/stderr, procura `hex data:` e
-rejeita mensagens de erro do helper. Isso tornou a leitura reproduzível antes
-de chamar a HAL diretamente.
+O primeiro wrapper chamou `/fh/extend/kdrv_debug`, capturou stdout/stderr e
+validou `hex data:` antes de a HAL direta ser usada. Ele foi substituído pela
+biblioteca `libfh_i2c`; os testes atuais estão em
+[`projects/sd5116-cli/src/onu_i2c_test.c`](../projects/sd5116-cli/src/onu_i2c_test.c).
 
 Com a HAL direta, foram validados no hardware:
 

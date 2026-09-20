@@ -1,117 +1,115 @@
 # FiberHome SD5116 — contexto operacional
 
-## Escopo e regras
+## Escopo e limites
 
-ONU FiberHome baseada em HiSilicon SD5116, `hwcfg=0x24`. Não generalizar para
-outras AN5506-02-B. Shell root por serial já existe; não redescobrir acesso.
+Esta unidade é uma FiberHome baseada em HiSilicon SD5116, `hwcfg=0x24`. Não
+generalizar conclusões para outra AN5506-02-B ou outra PCB.
 
-- `firmware-original/` e `extracted/` são imutáveis.
-- Slot A é recuperação: nunca alterar `mtd5–mtd7`.
-- Nunca gravar `mtd0–mtd4` ou `mtd11`; nunca usar `dd` em NAND/MTD.
-- Experimentos de filesystem ficam em `modified/`; scripts da ONU usam BusyBox
-  POSIX `sh`.
-- Engenharia de hardware é leitura primeiro: não usar `phymem_write` nem
-  escrever em MMIO, I²C, óptica ou GPIO desconhecido.
+- `firmware-original/` e `extracted/` são evidência imutável.
+- Slot A é recuperação: nunca alterar `mtd5`, `mtd6` ou `mtd7`.
+- Nunca gravar `mtd0`–`mtd4` nem `mtd11`; nunca usar `dd` em NAND/MTD.
+- Não existe mais diretório `modified/`. Experimentos persistentes, se forem
+  necessários, devem ser explicitamente autorizados e separados da extração.
+- Scripts para a ONU precisam ser POSIX `/bin/sh` compatível com BusyBox 1.18.
+- Testes de hardware devem usar `/tmp` e não mudar boot, MTD ou configuração.
 
-## Sistema confirmado
+## Hardware e boot confirmados
 
-| Item | Valor |
+| Item | Valor observado |
 |---|---|
-| SoC | SD5116, ARM Cortex-A9 (`part 0xc09`) |
+| SoC | SD5116; Cortex-A9 (`part 0xc09`) |
 | Kernel | Linux 2.6.34.10 ARMv7 |
-| RAM Linux | `mem=59M`; System RAM `0x80500000–0x83ffffff` |
+| RAM Linux | `mem=59M`; mapa `0x80500000–0x83ffffff` |
 | NAND | 128 MiB; página 2 KiB; eraseblock 128 KiB; OOB 64 B |
-| Console | `ttyAMA1`, 115200 (`console=ttyAMA1,115200`) |
-| UART0 | `0x1010e000`, IRQ 77 |
-| UART1 | `0x1010f000`, IRQ 78 |
+| Console | `ttyAMA1`, 115200 |
+| UART0/UART1 | `0x1010e000` IRQ 77 / `0x1010f000` IRQ 78 |
+| MTD A | `mtd5` rootfs, `mtd6` app_bin, `mtd7` app_ex |
+| MTD B | `mtd8` rootfs, `mtd9` app_bin, `mtd10` app_ex |
 
-64 MiB de RAM física é **inferência**. Os 5 MiB anteriores ao mapa Linux são
-excluídos pelo layout U-Boot/kernel; U-Boot carrega `uImage` em `0x80008000`.
-O ocupante completo do intervalo após o boot é desconhecido. Não mudar
-`mem=59M`: isso não recupera a faixa inferior e pode mapear RAM inexistente.
+64 MiB de RAM física é inferência; 5 MiB abaixo de `PHYS_OFFSET` não são
+visíveis ao Linux. Não mudar `mem=59M`.
 
-## Boot e rede
+`rcS` chama `initialize.sh`; `net_dev_created` cria Ethernet e `br0`.
+`load_cli` é autenticação FiberHome própria, não o login Unix de
+`/etc/passwd`. O `initialize.sh` de teste atual preserva rede estática em
+`br0` e não inicia WebUI, CLI, `fh_bsp_led_act` ou `detectHwEvent`.
 
-- Partições B: `mtd8` rootfs, `mtd9` `/fh/bin`, `mtd10` `/fh/extend`.
-- A ROM inicia `mtd0` (`startcode`), que valida U-Boot A/B por instrução,
-  magic, tamanho e CRC antes de transferir controle; ele contém fallback para
-  uma cópia válida. A prioridade exata entre A/B ainda é desconhecida.
-- `fhdrv_kdrv_mount` monta `cfg` em `/fhcfg` e seleciona as aplicações A/B.
-- `rcS` chama `initialize.sh`; `net_dev_created` cria `eth*` e `br0`.
-- `load_cli` é a autenticação FiberHome; não usa `/etc/passwd`.
-- O `humen-mod` atual mantém rede estática em `br0` e não inicia WebUI, CLI,
-  `fh_bsp_led_act` ou `detectHwEvent`.
-- Não remover `hi_gpon.ko`/`hi_epon.ko`: a tentativa anterior quebrou a cadeia
-  Ethernet/CFE. Desativar serviços PON em espaço de usuário, não os drivers.
+Não remover `hi_gpon.ko` ou `hi_epon.ko`: a remoção anterior quebrou a cadeia
+Ethernet. Para o Linux mínimo, desativar serviços PON de userspace.
 
-## GPIO, LEDs e PHY
+## GPIO e SPI por bit-banging
+
+O dispositivo GPIO é `/dev/fhdrv_kdrv_board`. A ABI foi recuperada de
+`kdrv_debug` e `libfhdrv_kdrv_board.so`; as bibliotecas locais são a interface
+atual, não `kdrv_debug`.
 
 ```text
-GPIO  6  VOIP LED       GPIO 12  LAN1 LED
-GPIO 13  LAN2 LED       GPIO 14  botão LED
-GPIO 30  LOS LED        GPIO 31  PON LED
-GPIO 32  reset          GPIO 33  LED switch
+GPIO  6 PHONE LED     GPIO 12 LAN1 LED
+GPIO 13 LAN2 LED      GPIO 14 botão LED
+GPIO 30 LOS LED       GPIO 31 PON LED
+GPIO 32 RESET         GPIO 33 chave geral dos LEDs
 ```
 
-Mapa publicado em `/proc/driver/fh_bsp_gpio_list`. Há acesso direto por
-`/dev/fhdrv_kdrv_board` e exemplos em `projects/sd5116-cli/`.
+LEDs são ativos em nível baixo. GPIO 31 e GPIO 12 foram testados fisicamente;
+LAN1 manteve controle direto durante o boot com os serviços de LED desativados.
 
-`hi_bridge.ko` mantém `phy_manager` e configura LEDs do PHY por MDIO. Sem o
-daemon `fh_bsp_led_act`, ele é o candidato à atividade automática de LAN1/LAN2.
-Teste físico: `onu-led-direct` mantém LAN1 (GPIO 12, ativo-baixo) aceso mesmo
-após desconectar/reconectar Ethernet. No boot atual, o utilitário tem controle
-exclusivo prático desse LED; não é garantia se serviços de LED forem reativados.
-
-## I²C, SPI, óptica e FXS
-
-- I²C 0 e 1 respondem apenas em `0x50` e `0x51`.
-- `0x50`: identificação óptica; `0x51`: dados/diagnóstico óptico (`hi_koptical`).
-- HE24C08 física: relação com esses endereços é **desconhecida**. Não escrever.
-- Não há `/dev/i2c-*`; usar `/tmp/onu-i2c`/`kdrv_debug i2c` para leitura.
-- Há `hi_spi` e SPI de SerDes no firmware, mas não há pinout SPI externo
-  confirmado. `OUT_SLIC_SPI_CS` vale `-1` nesta variante.
-- Padrão do SPI por bit-banging em `projects/sd5116-gpio-spi/`: CS GPIO 6
-  (PHONE), SCLK GPIO 31 (PON), MOSI GPIO 30 (LOS), MISO GPIO 12 (LAN1).
-  Foi validado apenas como transferência dummy pelos LEDs; não é SPI dedicado
-  nem há cartão/periférico conectado.
-- O SLIC físico informado é LE9641. A pilha FXS existe no firmware, mas
-  reset/SPI/PCM/configuração ainda não foram mapeados; o init atual não inicia
-  VoIP.
-- GPON/EPON e óptica são suportados pelo firmware; não usar o laser como fonte
-  genérica.
-
-## USB: resultado estático
+SPI software validado apenas como transmissão dummy visível pelos LEDs:
 
 ```text
-EHCI  0x10a40000–0x10a4ffff  IRQ 71
-OHCI  0x10a50000–0x10a5ffff  IRQ 70
+CS=GPIO 6, SCLK=GPIO 31, MOSI=GPIO 30, MISO=GPIO 12
 ```
 
-O kernel contém EHCI, OHCI e `usb-storage`. `hiusb_start_hcd`/`stop_hcd`
-manipulam `0xf8100134`, `0xf8100154`, `0xfc880020` e `0xfc900200`.
+Não há periférico SPI externo ou pinout dedicado confirmado. Para outra PCB,
+refazer o mapeamento.
 
-`virtual - 0xe8000000` é uma tradução **inferida**, que produz
-`0x10100134`, `0x10100154`, `0x14880020` e `0x14900200`. O último participa
-diretamente da inicialização USB e recebe `0x000c6111`/`0x000c6110`; a função
-dos registradores/bits ainda é desconhecida.
+## I²C
 
-Não há D+/D−, VBUS, conector USB ou relação com `JB1` confirmados. USB é
-suportado pelo SoC/software, mas não é ainda uma porta externa utilizável.
+Não há nós `/dev/i2c-*`. O acesso atual usa a HAL proprietária direta:
 
-## Pads e próximos passos
+```text
+libhi_ubasic.so → libhi_ioreactor.so → libhi_ipc.so → libhi_hal.so
+```
 
-- `JB1`: dois pinos próximos a 3,3 V e um GND; não é a UART conhecida. Pode
-  ser GPIO, fábrica, JTAG, USB ou outro barramento: **desconhecido**.
-- Leituras seguras prioritárias:
+`libfh_i2c` expõe I²C0 a 100 ou 400 kHz e mensagens de até 128 bytes. O OLED
+SSD1306 externo em I²C0, endereço `0x3c`, foi validado a 100 e 400 kHz; o
+framebuffer completo atingiu 10 FPS e 30 FPS, respectivamente.
+
+Os endereços `0x50` e `0x51` também respondem nos canais investigados e fazem
+parte do caminho óptico. A associação da HE24C08 física a esses endereços não
+foi provada. Não escrever em `0x50`/`0x51`.
+
+## Projetos e bibliotecas atuais
+
+```text
+libs/libfh_gpio       GPIO por ioctl direto
+libs/libfh_gpio_spi   SPI por bit-banging sobre GPIO
+libs/libfh_i2c        I²C HAL direta
+libs/libfh_i2c_lcd    framebuffer SSD1306 sobre I²C
+
+projects/sd5116-cli        testes atuais de transmissão GPIO/SPI/I²C
+projects/sd5116-i2c-tests  testes de OLED, scan e LCD PCF8574
+projects/sd5116-oled-frame renderização de texto/BMP no SSD1306
+projects/onu-transfer      push/pull/exec via rede
+```
+
+`sd5116-cli` não usa `kdrv_debug`:
 
 ```sh
-cli /home/cli/hal/chip/phymem_read -v addr 0x10a40000
-cli /home/cli/hal/chip/phymem_read -v addr 0x10a50000
-cli /home/cli/hal/chip/phymem_read -v addr 0x14900200
+/tmp/onu-gpio-test tx --force 31 100 10000
+/tmp/onu-spi-test tx --force --delay-us 10 0x55
+/tmp/onu-i2c-test tx --force --speed 400 --repeat 10 0x3c 0x40 0x55
 ```
 
-- Depois: rastrear D+/D−/VBUS, HE24C08 e UART0 com PCB desligada; não injetar
-  tensão nem alterar registradores.
+## Interfaces ainda sem uso prático
 
-Detalhes ficam em `docs/`; o resumo de hardware é
-`docs/estado atual da eng reversa de hw.md`.
+- USB: EHCI/OHCI e `usb-storage` existem no software, mas não foram achados
+  D+/D−, VBUS ou conector externo na PCB. Não há porta USB utilizável provada.
+- FXS: há SLIC LE9641 e pilha VoIP no firmware, mas reset, SPI, PCM e a
+  configuração não foram mapeados. VoIP não inicia no boot mínimo atual.
+- GPON/EPON: não usar o transmissor óptico como laser genérico.
+- `JB1`: conector I²C identificado: GND, SCL e SDA. Foi usado para os testes
+  com OLED SSD1306 e LCD PCF8574.
+
+Documentos de referência: `docs/ANALYSIS.md`,
+`docs/estado atual da eng reversa de hw.md` e
+`docs/CADERNO_RE_KDRV_DEBUG_GPIO_I2C.md`.

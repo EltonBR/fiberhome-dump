@@ -84,8 +84,8 @@ VoIP/SLIC, mas reset, SPI/PCM e configuração FXS ainda não foram mapeados; o
 `initialize.sh` atual não inicia VoIP. Não ligar telefone/fax até inicializar a
 pilha própria de modo controlado.
 
-`JB1` tem dois pinos próximos a 3,3 V e um GND; não é UART conhecida e não há
-evidência suficiente para chamá-lo de USB, JTAG ou SPI.
+`JB1` é o conector I²C da PCB: GND, SCL e SDA. Foi validado com periféricos
+I²C externos; não é UART, USB, JTAG nem SPI.
 
 ## Próximas ações seguras
 

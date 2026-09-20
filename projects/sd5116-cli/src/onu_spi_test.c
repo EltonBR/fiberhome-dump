@@ -1,0 +1,8 @@
+#include "fh_gpio_spi.h"
+#include <errno.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+static int num(const char*s,unsigned long max,unsigned long*v){char*e;errno=0;*v=strtoul(s,&e,0);return errno||!*s||*e||*v>max?-1:0;}
+static void usage(const char*p){fprintf(stderr,"Uso: %s tx --force [--mode 0..3] [--delay-us N] [--repeat N] [--pins CS CLK MOSI MISO] <byte...>\n",p);}
+int main(int ac,char**av){fh_gpio_spi_t s;uint32_t pins[4]={SPI_DEFAULT_CS,SPI_DEFAULT_SCLK,SPI_DEFAULT_MOSI,SPI_DEFAULT_MISO};unsigned long v,mode=SPI_MODE_0,delay=SPI_DELAY_TEST_US,repeat=1,i,j;uint8_t tx[128],rx[128];int n=0;if(ac<4||strcmp(av[1],"tx")||strcmp(av[2],"--force")){usage(av[0]);return 2;}for(i=3;i<(unsigned long)ac;){if(!strcmp(av[i],"--mode")&&i+1<(unsigned long)ac&&num(av[i+1],3,&mode)==0){i+=2;continue;}if(!strcmp(av[i],"--delay-us")&&i+1<(unsigned long)ac&&num(av[i+1],10000000UL,&delay)==0){i+=2;continue;}if(!strcmp(av[i],"--repeat")&&i+1<(unsigned long)ac&&num(av[i+1],1000000UL,&repeat)==0&&repeat){i+=2;continue;}if(!strcmp(av[i],"--pins")&&i+4<(unsigned long)ac){for(j=0;j<4;j++)if(num(av[i+1+j],255,&v))break;else pins[j]=(uint32_t)v;if(j==4){i+=5;continue;}}if(n<(int)sizeof(tx)&&num(av[i],255,&v)==0){tx[n++]=(uint8_t)v;i++;continue;}usage(av[0]);return 2;}if(!n){usage(av[0]);return 2;}if(fh_gpio_spi_open(&s,pins[0],pins[1],pins[2],pins[3],(unsigned int)mode,delay)){perror("SPI");return 1;}for(i=0;i<repeat;i++)if(fh_gpio_spi_transfer(&s,tx,rx,(size_t)n)){perror("SPI");fh_gpio_spi_close(&s);return 1;}fh_gpio_spi_close(&s);printf("TX:");for(j=0;j<(unsigned long)n;j++)printf(" %02x",tx[j]);printf("\nRX:");for(j=0;j<(unsigned long)n;j++)printf(" %02x",rx[j]);puts("");return 0;}
