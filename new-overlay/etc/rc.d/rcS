@@ -33,7 +33,8 @@ mdev -s
 echo /sbin/mdev > /proc/sys/kernel/hotplug
 
 # 引导挂载使用cbb后更改名字
-/bin/fhdrv_kdrv_mount
+#/bin/fhdrv_kdrv_mount
+mount -t jffs2 /dev/mtdblock10 /fh/extend/
 
 echo "
 |-----------------------  HSAN: Load Driver Modules  -------------------------|"

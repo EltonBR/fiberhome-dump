@@ -1,0 +1,82 @@
+#!/bin/sh
+# Handler chamado pelo udhcpc do BusyBox. Nao execute manualmente.
+
+set -u
+
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/fh/bin:/fh/extend
+export PATH
+
+IFACE=${interface:-br0}
+RESOLV_CONF=/etc/resolv.conf
+NTP_FILE=/var/run/udhcpc-br0.ntp-server
+
+log()
+{
+    printf '%s\n' "udhcpc($IFACE): $*"
+}
+
+remove_default_route()
+{
+    while route del default dev "$IFACE" 2>/dev/null; do :; done
+}
+
+write_dns()
+{
+    : > "$RESOLV_CONF"
+    for dns_server in ${dns:-}; do
+        printf 'nameserver %s\n' "$dns_server" >> "$RESOLV_CONF"
+    done
+}
+
+sync_ntp()
+{
+    [ -r "$NTP_FILE" ] || return 0
+    read ntp_server < "$NTP_FILE" || return 0
+    [ -n "$ntp_server" ] || return 0
+
+    log "sincronizando relogio com $ntp_server"
+    ntpd -q -p "$ntp_server" >/dev/null 2>&1 || \
+        log "falha ao sincronizar NTP (a rede pode ainda estar indisponivel)"
+}
+
+configure()
+{
+    [ -n "${ip:-}" ] || {
+        log "evento $1 sem endereco IPv4"
+        return 1
+    }
+
+    ifconfig "$IFACE" 0.0.0.0 up
+    if [ -n "${subnet:-}" ]; then
+        ifconfig "$IFACE" "$ip" netmask "$subnet" up
+    else
+        ifconfig "$IFACE" "$ip" up
+    fi
+
+    remove_default_route
+    for router_ip in ${router:-}; do
+        route add default gw "$router_ip" dev "$IFACE" && break
+    done
+
+    write_dns
+    log "$1: IPv4=$ip mascara=${subnet:-nao-informada} gateway=${router:-nenhum}"
+    sync_ntp
+}
+
+case "${1:-}" in
+    deconfig)
+        ifconfig "$IFACE" 0.0.0.0 up
+        remove_default_route
+        : > "$RESOLV_CONF"
+        log "configuracao IPv4 removida"
+        ;;
+    bound|renew)
+        configure "$1"
+        ;;
+    nak|leasefail)
+        log "DHCP $1"
+        ;;
+    *)
+        log "evento desconhecido: ${1:-vazio}"
+        ;;
+esac
