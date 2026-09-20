@@ -7,6 +7,7 @@ Este projeto consome as bibliotecas locais e não chama `kdrv_debug`.
 | `onu-gpio-test` | `libfh_gpio` | lê, escreve e gera pulsos em GPIO |
 | `onu-spi-test` | `libfh_gpio_spi` → `libfh_gpio` | transmite SPI por bit-banging |
 | `onu-i2c-test` | `libfh_i2c` | transmite I²C0 pela HAL direta |
+| `onu-hw-selftest` | `libfh_gpio` + `libfh_i2c` | LEDs, botões e OLED SSD1306 |
 
 Compile com `make`. GPIO e SPI são estáticos. I²C é dinâmico, pois
 `libfh_i2c` carrega a HAL proprietária presente na ONU.
@@ -35,3 +36,11 @@ variante sem repetir o mapeamento.
 
 O modo I²C transmite bytes de verdade. Não use endereços internos como `0x50`
 ou `0x51` até identificar completamente o periférico.
+
+## Autoteste
+
+`onu-hw-selftest --force` acende, por 200 ms cada, PON, LOS, PHONE, LAN1 e
+LAN2; lê os botões RESET e LED; e envia o comando SSD1306 NOP (`0xe3`) ao OLED
+externo `0x3c` por I²C0 a 400 kHz. O comando NOP não altera framebuffer ou
+configuração do display. Ao terminar ou receber `Ctrl+C`, desliga todos os LEDs
+testados. Ele retorna zero somente quando GPIO e I²C concluírem sem erro.

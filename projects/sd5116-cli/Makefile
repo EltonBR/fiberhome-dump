@@ -12,7 +12,7 @@ STATIC_LDFLAGS := -static -Wl,--gc-sections -s
 DYNAMIC_LDFLAGS := -Wl,--gc-sections,--allow-shlib-undefined -L$(TARGET_LIBDIR) -Wl,-l:libdl.so.0
 
 .PHONY: all clean host-check libs
-all: libs bin/onu-gpio-test bin/onu-spi-test bin/onu-i2c-test
+all: libs bin/onu-gpio-test bin/onu-spi-test bin/onu-i2c-test bin/onu-hw-selftest
 libs:
 	$(MAKE) -C $(GPIO_DIR)
 	$(MAKE) -C $(SPI_DIR)
@@ -23,9 +23,11 @@ bin/onu-spi-test: src/onu_spi_test.c $(SPI_DIR)/lib/libfh_gpio_spi.a $(GPIO_DIR)
 	$(CC) $(CPPFLAGS) $(CFLAGS) -o $@ $< $(SPI_DIR)/lib/libfh_gpio_spi.a $(GPIO_DIR)/lib/libfh_gpio.a $(STATIC_LDFLAGS)
 bin/onu-i2c-test: src/onu_i2c_test.c $(I2C_DIR)/lib/libfh_i2c.a | bin
 	$(CC) $(CPPFLAGS) $(CFLAGS) -o $@ $< $(I2C_DIR)/lib/libfh_i2c.a $(DYNAMIC_LDFLAGS)
+bin/onu-hw-selftest: src/onu_hw_selftest.c $(GPIO_DIR)/lib/libfh_gpio.a $(I2C_DIR)/lib/libfh_i2c.a | bin
+	$(CC) $(CPPFLAGS) $(CFLAGS) -o $@ $< $(GPIO_DIR)/lib/libfh_gpio.a $(I2C_DIR)/lib/libfh_i2c.a $(DYNAMIC_LDFLAGS)
 bin:
 	mkdir -p $@
 host-check:
-	$(HOST_CC) $(CPPFLAGS) $(CFLAGS) -fsyntax-only src/onu_gpio_test.c src/onu_spi_test.c src/onu_i2c_test.c
+	$(HOST_CC) $(CPPFLAGS) $(CFLAGS) -fsyntax-only src/onu_gpio_test.c src/onu_spi_test.c src/onu_i2c_test.c src/onu_hw_selftest.c
 clean:
 	rm -rf bin
